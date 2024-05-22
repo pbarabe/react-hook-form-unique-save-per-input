@@ -11,9 +11,11 @@ Adapted from:
 ## Install and use demo
 
 ```sh
-$ git clone TBD
+$ git clone https://github.com/pbarabe/react-hook-form-unique-save-per-input.git
 $ cd react-hook-form-unique-save-per-input
 $ npm install
 $ npm run start
 ```
+
+View the browser's JS console to see `onSubmit` output.
 
