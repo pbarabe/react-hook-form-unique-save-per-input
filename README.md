@@ -3,7 +3,7 @@
 This example app demonstrates an implementation of a page with multiple form inputs
 that each submit separately using the same `onSubmit` function.
 
-## Install and use demo
+## Install and Use
 
 ```sh
 $ git clone https://github.com/pbarabe/react-hook-form-unique-save-per-input.git
@@ -14,7 +14,7 @@ $ npm run start
 
 View the browser's JS console to see `onSubmit` output.
 
-## Adapted from:
+## Adapted From:
 
 - The React Hook Form [basic example](https://codesandbox.io/s/react-hook-form-apply-validation-q5m00)
 - The React Hook Form [FormProvider example](https://react-hook-form.com/docs/formprovider)
