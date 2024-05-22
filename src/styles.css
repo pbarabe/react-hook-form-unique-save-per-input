@@ -33,6 +33,16 @@ p::before {
   content: "⚠ ";
 }
 
+fieldset {
+  margin-top: 1em;
+  border-radius: 14px;
+}
+
+legend {
+  font-size: 1rem;
+  color: white;
+}
+
 input {
   display: block;
   box-sizing: border-box;

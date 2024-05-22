@@ -39,26 +39,39 @@ function App() {
         <input type="submit" value="Save Q2" />
       </InputForm>
 
+      {/* Demo muliple inputs in one form */}
       <InputForm onSubmit={onSubmit}>
-        <InputElement
-          label="Q3: Age"
-          inputName="age"
-          validation={{
-            required: true,
-            min: 18,
-            max: 99
-          }}
-          validationMsg="Age is required and must be &ge; 18 and &le; 99"
-        />
-        <input type="submit" value="Save Q3" />
+        <fieldset>
+          <legend>Two Questions</legend>
+          <InputElement
+            label="Q3: Birth Month"
+            inputName="birthMonth"
+            validation={{
+              required: true
+            }}
+            validationMsg="Birth Month is required"
+          />
+          <InputElement
+            label="Q3: Age"
+            inputName="age"
+            validation={{
+              required: true,
+              min: 18,
+              max: 99
+            }}
+            validationMsg="Age is required and must be &ge; 18 and &le; 99"
+          />
+          <input type="submit" value="Save Q3 and Q4" />
+        </fieldset>
       </InputForm>
     </>
   )
 }
 
 /**
- * InputForm implements a unique FormProvider and HTML form
+ * InputForm implements a unique FormProvider and HTML/JSX form
  * meant to wrap an individual InputElement (or group of related inputs)
+ * and corresponding submit button
  */
 function InputForm({...props}) {
   const methods = useForm()
