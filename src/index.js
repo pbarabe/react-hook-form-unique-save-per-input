@@ -13,30 +13,41 @@ function App() {
 
   return (
     <>
+      <h1>
+        React Hook Form Example:<br />
+        One Page With Multiple, Distinct Forms
+      </h1>
+
       <InputForm onSubmit={onSubmit}>
-        <InputElement
-          label="Q1: First Name"
-          inputName="firstName"
-          validation={{
-            required: true,
-            maxLength: 20
-          }}
-          validationMsg="First Name is required and must be &le; 20 charaters"
-        />
-        <input type="submit" value="Save Q1" />
+        <fieldset>
+          <legend>Question 1</legend>
+          <InputElement
+            label="Q1: First Name"
+            inputName="firstName"
+            validation={{
+              required: true,
+              maxLength: 20
+            }}
+            validationMsg="First Name is required and must be &le; 20 charaters"
+          />
+          <input type="submit" value="Save Q1" />
+        </fieldset>
       </InputForm>
 
       <InputForm onSubmit={onSubmit}>
-        <InputElement
-          label="Q2: Last Name"
-          inputName="lastName"
-          validation={{
-            required: true,
-            pattern: /^[A-Za-z]+$/i
-          }}
-          validationMsg="Last Name is required"
-        />
-        <input type="submit" value="Save Q2" />
+        <fieldset>
+          <legend>Question 2</legend>
+          <InputElement
+            label="Q2: Last Name"
+            inputName="lastName"
+            validation={{
+              required: true,
+              pattern: /^[A-Za-z]+$/i
+            }}
+            validationMsg="Last Name is required"
+          />
+          <input type="submit" value="Save Q2" />
+        </fieldset>
       </InputForm>
 
       {/* Demo muliple inputs in one form */}
