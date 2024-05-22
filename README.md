@@ -16,7 +16,7 @@ View the browser's JS console to see `onSubmit` output.
 
 ## Adapted From:
 
-- The React Hook Form [basic example](https://codesandbox.io/s/react-hook-form-apply-validation-q5m00)
-- The React Hook Form [FormProvider example](https://react-hook-form.com/docs/formprovider)
-- [This question](https://stackoverflow.com/questions/60276510/how-to-make-react-hook-form-work-with-multiple-forms-in-one-page#60277873) on StackOverflow
+- The React Hook Form [Validation Example](https://codesandbox.io/s/react-hook-form-apply-validation-q5m00)
+- The React Hook Form [FormProvider Example](https://react-hook-form.com/docs/formprovider)
+- The responses to [this question](https://stackoverflow.com/questions/60276510/how-to-make-react-hook-form-work-with-multiple-forms-in-one-page#60277873) on StackOverflow
 
