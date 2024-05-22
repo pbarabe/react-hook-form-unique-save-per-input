@@ -11,12 +11,6 @@ function App() {
     console.log(data)
   }
 
-  /*
-  console.log(methods.watch('firstName')) // watch individual input by passing the name of the input element
-  console.log(methods.watch('lastName')) // watch individual input by passing the name of the input element
-  console.log(methods.watch('age')) // watch individual input by passing the name of the input element
-  */
-
   return (
     <>
       <InputForm onSubmit={onSubmit}>
@@ -83,7 +77,13 @@ function InputForm({...props}) {
  * element, with its own error/validation handling
  */
 function InputElement({...props}) {
-  const { register, formState: {errors} } = useFormContext()
+  const { register, formState: {errors}, watch } = useFormContext()
+
+  // In development mode, we can watch the individual
+  // input by passing the name of the input element
+  if (process.env.NODE_ENV === 'development') {
+    console.log(watch(props.inputName))
+  }
 
   return (
     <>
