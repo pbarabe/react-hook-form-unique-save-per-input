@@ -25,10 +25,19 @@ function App() {
             label="Q1: First Name"
             inputName="firstName"
             validation={{
-              required: true,
-              maxLength: 20
+              required: {
+                value: true,
+                message: "First Name is required"
+              },
+              maxLength: {
+                value: 20,
+                message: "Must be no more than 20 characters"
+              },
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: "Alphabetic characters only"
+              }
             }}
-            validationMsg="First Name is required and must be &le; 20 charaters"
           />
           <input type="submit" value="Save Q1" />
         </fieldset>
@@ -41,10 +50,19 @@ function App() {
             label="Q2: Last Name"
             inputName="lastName"
             validation={{
-              required: true,
-              pattern: /^[A-Za-z]+$/i
+              required: {
+                value: true,
+                message: "Last Name is required"
+              },
+              maxLength: {
+                value: 20,
+                message: "Must be no more than 20 characters"
+              },
+              pattern: {
+                value: /^[A-Za-z]+$/i,
+                message: 'Alphabetic characters only'
+              }
             }}
-            validationMsg="Last Name is required"
           />
           <input type="submit" value="Save Q2" />
         </fieldset>
@@ -54,24 +72,51 @@ function App() {
       <InputForm onSubmit={onSubmit}>
         <fieldset>
           <legend>Two Questions</legend>
-          <InputElement
-            label="Q3: Birth Month"
-            inputName="birthMonth"
-            validation={{
-              required: true
-            }}
-            validationMsg="Birth Month is required"
-          />
+
           <InputElement
             label="Q3: Age"
             inputName="age"
+            type="number"
             validation={{
-              required: true,
-              min: 18,
-              max: 99
+              required: {
+                value: true,
+                message: "Age is required"
+              },
+              min: {
+                value: 18,
+                message: "Must be at least 18"
+              },
+              max: {
+                value: 99,
+                message: "May not be more than 99"
+              },
+              pattern: {
+                value: /^([1-9][0-9]*)$/,
+                message: "Must be a number"
+              }
             }}
-            validationMsg="Age is required and must be &ge; 18 and &le; 99"
           />
+
+          <SelectElement
+            label="Q3: Birth Month"
+            inputName="birthMonth"
+            selectOptions={[
+              { value: '', text: ''},
+              { value: 'jan', text: 'January'},
+              { value: 'feb', text: 'February'},
+              { value: 'mar', text: 'March'},
+              { value: 'apr', text: 'April'},
+              { value: 'may', text: 'May'},
+              { value: 'jun', text: 'June'},
+              { value: 'jul', text: 'July'},
+              { value: 'aug', text: 'August'},
+              { value: 'sep', text: 'September'},
+              { value: 'oct', text: 'October'},
+              { value: 'nov', text: 'November'},
+              { value: 'dec', text: 'December'},
+            ]}
+          />
+
           <input type="submit" value="Save Q3 and Q4" />
         </fieldset>
       </InputForm>
@@ -114,10 +159,56 @@ function InputElement({...props}) {
       <label>
         {props.label}
         <input
+          type={props.type}
           {...register(props.inputName, props.validation)}
         />
       </label>
-      {errors[props.inputName] && <p>{props.validationMsg}</p>}
+
+      <ValidationErrors inputName={props.inputName} />
+    </>
+  )
+}
+
+function SelectElement({...props}) {
+  const { register, formState: {errors}, watch } = useFormContext()
+
+  // In development mode, we can watch the individual
+  // input by passing the name of the input element
+  if (process.env.NODE_ENV === 'development') {
+    console.log(watch(props.inputName))
+  }
+
+  const selectOptions = props.selectOptions.map((next, i) => {
+    return (
+      <option key={i} value={next.value}>{next.text}</option>
+    )
+  })
+
+  return (
+    <>
+      <label>
+        {props.label}
+        <select
+          {...register(props.inputName, props.validation)}
+        >
+          {selectOptions}
+        </select>
+      </label>
+
+      <ValidationErrors inputName={props.inputName} />
+    </>
+  )
+}
+
+/**
+ * Generic handler for form validation errors
+ */
+function ValidationErrors({...props}) {
+  const {formState: {errors}} = useFormContext()
+
+  return (
+    <>
+      {errors[props.inputName]?.message && <p>{errors[props.inputName].message}</p>}
     </>
   )
 }

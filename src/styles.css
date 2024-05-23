@@ -44,7 +44,7 @@ legend {
   color: white;
 }
 
-input {
+input, select {
   display: block;
   box-sizing: border-box;
   width: 100%;
