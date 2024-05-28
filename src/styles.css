@@ -11,7 +11,7 @@ form {
 }
 
 h1 {
-  font-weight: 100;
+  font-weight: 400;
   color: white;
   text-align: center;
   padding-bottom: 10px;
@@ -22,6 +22,20 @@ h1 {
   background: #0e101c;
   max-width: 400px;
   margin: 0 auto;
+}
+
+p.info {
+  font-size: 1.6rem;
+  color: #ffffff;
+  text-align: center;
+  margin: 2rem auto;
+}
+p.info::before {
+  display: none;
+  content: "";
+}
+p.info code {
+  color: #bf1650;
 }
 
 p {

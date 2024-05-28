@@ -18,6 +18,10 @@ function App() {
         One Page With Multiple, Distinct Forms
       </h1>
 
+      <p class="info">
+        This app defines a single <code>onSubmit()</code> action that is used by all 3 forms.
+      </p>
+
       <InputForm onSubmit={onSubmit}>
         <fieldset>
           <legend>Question 1</legend>
